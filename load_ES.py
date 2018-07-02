@@ -6,16 +6,17 @@ Get data from ES
 '''
 from elasticsearch import Elasticsearch
 
-INDEX_LOCAL = 'data_gv_at'
-INDEX_SERVER = 'atcsv'
+# config tuple: (index_name, port)
+LOCAL_ES = ('data_gv_at', 9200)
+SERVER_ES = ('atcsv', 9202)
 
-INDEX = INDEX_SERVER
+CONFIG = SERVER_ES
 N = 2914
 
 
 class ESClient():
 
-    def __init__(self, index=INDEX, host='localhost', port=9200):
+    def __init__(self, index=CONFIG[0], host='localhost', port=CONFIG[1]):
         self.es = Elasticsearch(hosts=[{"host": host, "port": port}])
         self.index = index
 
