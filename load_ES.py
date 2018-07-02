@@ -6,7 +6,10 @@ Get data from ES
 '''
 from elasticsearch import Elasticsearch
 
-INDEX = 'data_gv_at'
+INDEX_LOCAL = 'data_gv_at'
+INDEX_SERVER = 'atcsv'
+
+INDEX = INDEX_SERVER
 N = 2914
 
 
