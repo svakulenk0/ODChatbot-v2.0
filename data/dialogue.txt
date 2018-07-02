@@ -1,0 +1,3 @@
+Hello	Salut
+Hi	How are you
+Hello	Hi
