@@ -36,9 +36,9 @@ with open('generated_train.txt', 'wb') as f_train, open('generated_test.txt', 'w
             print sample
             samples.append(sample)
 
-        train_samples = samples[:40]
+        train_samples = samples[:30]
         f_train.writelines('\n'.join(train_samples) + '\n')
-        test_samples = samples[41:51]
+        test_samples = samples[31:]
         f_test.writelines('\n'.join(test_samples) + '\n')
 
     # generate training data 1,000 instances
