@@ -1,0 +1,5 @@
+hello	Hi!
+what can you do	We have a wide variety of data
+good bye	Bye!
+do you have categories	There are datasets related to public services, geography, arts, sports, environment, etc.
+im interested in data about graz	search graz
