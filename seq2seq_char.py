@@ -17,13 +17,13 @@ limit = 10000  # maximum number of samples to train on.
 
 from __future__ import print_function
 import pickle
+import argparse
 
 from keras.models import Model, load_model
 from keras.layers import Input, LSTM, Dense
 import numpy as np
 
 batch_size = 1  # Batch size for training.
-epochs = 100  # Number of epochs to train for.
 latent_dim = 256  # Latent dimensionality of the encoding space.
 limit = 10  # Number of samples to train on.
 # Path to the data txt file on disk.
@@ -35,7 +35,11 @@ path_target_index = 'models/target_index.pickle'
 
 class Seq2Seq():
 
-    def __init__(self):
+    def __init__(self, epochs=100):
+        '''
+        epochs - number of epochs to train for
+        '''
+        self.epochs = epochs
         self.max_encoder_seq_length = 61
         self.max_decoder_seq_length = 220
 
@@ -193,7 +197,7 @@ class Seq2Seq():
         self.model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
         self.model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
                   batch_size=batch_size,
-                  epochs=epochs)
+                  epochs=self.epochs)
         # ,
                   # validation_split=0.2)
         # Save model
@@ -265,7 +269,11 @@ class Seq2Seq():
 
 
 def train_model():
-    model = Seq2Seq()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-e", help="number of epochs to train for")
+    args = parser.parse_args()
+    epochs = int(args.e)
+    model = Seq2Seq(epochs)
     input_texts, encoder_input_data, decoder_input_data, decoder_target_data = model.preprocess(data_path)
     model.train(encoder_input_data, decoder_input_data, decoder_target_data)
     model.test(input_texts, encoder_input_data)
