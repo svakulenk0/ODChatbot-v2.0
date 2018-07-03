@@ -1,3 +1,29 @@
-Hello	Salut
-Hi	How are you
-Hello	Hi
+hello	Hi! I am here to help you explore the available open data sets! Are you interested in something specifically or just looking around?
+what can you do	We have a wide variety of data - lots of data about every single state in Austria, but also about areas like health, culture, traffic and infrastructure
+what datasets do you have	There are many datasets across various topics, e.g. culture, education, finances, geography, healthcare, population statistics, agriculture, ecology, politics and economics of Austria. What would be of interest to you?
+im interested in data about vienna or generally about austria	search vienna austria
+do you have categories	All our datasets are about Austria. There are datasets related to public services, geography, arts, sports, environment, etc.
+thank you	My pleasure
+bye	Bye!
+hello there	Hi! I am here to help you explore the available open data sets! Are you interested in something specifically or just looking around?
+what can you	We have a wide variety of data - lots of data about every single state in Austria, but also about areas like health, culture, traffic and infrastructure
+what data do you have	There are many datasets across various topics, e.g. culture, education, finances, geography, healthcare, population statistics, agriculture, ecology, politics and economics of Austria. What would be of interest to you?
+im interested in data about linz	search linz
+categories	All our datasets are about Austria. There are datasets related to public services, geography, arts, sports, environment, etc.
+thanks	My pleasure
+good bye	Bye!
+hi there	Hi! I am here to help you explore the available open data sets! Are you interested in something specifically or just looking around?
+what can you say	We have a wide variety of data - lots of data about every single state in Austria, but also about areas like health, culture, traffic and infrastructure
+give me data	There are many datasets across various topics, e.g. culture, education, finances, geography, healthcare, population statistics, agriculture, ecology, politics and economics of Austria. What would be of interest to you?
+im interested in data about graz	search graz
+what are the categories	All our datasets are about Austria. There are datasets related to public services, geography, arts, sports, environment, etc.
+thank you very much	My pleasure
+good-bye	Bye!
+what do you have on dogs	search dogs
+is there something about politics	search politics
+im interested in data related to agriculture	search agriculture
+im interested in data concerning employment	search employment
+immigration	search immigration
+data about education	search education
+data from graz	search graz
+data from austria	search austria
