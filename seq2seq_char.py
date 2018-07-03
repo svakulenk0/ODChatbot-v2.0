@@ -24,7 +24,7 @@ from keras.layers import Input, LSTM, Dense
 import numpy as np
 
 # Path to the data txt file on disk.
-data_path = 'data/dialogue.txt'
+data_path = 'data/generated_train.txt'
 model_path = 'models/s2s.h5'
 path_input_index = 'models/input_index.pickle'
 path_target_index = 'models/target_index.pickle'
@@ -35,8 +35,8 @@ class Seq2Seq():
     def __init__(self):
         '''
         '''
-        self.max_encoder_seq_length = 61
-        self.max_decoder_seq_length = 220
+        self.max_encoder_seq_length = 62
+        self.max_decoder_seq_length = 32
         self.latent_dim = 256
 
     def restore_model(self, path):
