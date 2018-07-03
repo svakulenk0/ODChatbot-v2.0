@@ -263,9 +263,10 @@ class Seq2Seq():
         for t, char in enumerate(input_text):
             input_seq[0, t, self.input_token_index[char]] = 1.
         decoded_sentence = self.decode_sequence(input_seq)
-        print('-')
-        print('Input sentence:', input_text)
-        print('Decoded sentence:', decoded_sentence)
+        return decoded_sentence
+	#print('-')
+        #print('Input sentence:', input_text)
+        #print('Decoded sentence:', decoded_sentence)
 
 
 def train_model():
@@ -286,6 +287,16 @@ def test_saved_model():
     model.infer(input_text)
 
 
+def interactive_mode():
+    model = Seq2Seq()
+    model.restore_model(model_path)
+	while True:
+		input_text = input()
+        	print input_text
+    		print model.infer(input_text.lower())
+
+
 if __name__ == '__main__':
-    train_model()
-    test_saved_model()
+  #  train_model()
+#    test_saved_model()
+    interactive_mode()
