@@ -23,11 +23,8 @@ from keras.models import Model, load_model
 from keras.layers import Input, LSTM, Dense
 import numpy as np
 
-batch_size = 1  # Batch size for training.
-latent_dim = 256  # Latent dimensionality of the encoding space.
-limit = 30  # Number of samples to train on.
 # Path to the data txt file on disk.
-data_path = 'data/dialogue.txt'
+data_path = 'data/dialogue_test.txt'
 model_path = 'models/s2s.h5'
 path_input_index = 'models/input_index.pickle'
 path_target_index = 'models/target_index.pickle'
@@ -35,13 +32,13 @@ path_target_index = 'models/target_index.pickle'
 
 class Seq2Seq():
 
-    def __init__(self, epochs=100):
+    def __init__(self, epochs, batch_size, latent_dim, limit):
         '''
         epochs - number of epochs to train for
         '''
         self.epochs = epochs
-        self.max_encoder_seq_length = 61
-        self.max_decoder_seq_length = 220
+        self.max_encoder_seq_length = 32
+        self.max_decoder_seq_length = 91
 
     def restore_model(self, path):
         # Restore the model and construct the encoder and decoder.
@@ -73,8 +70,7 @@ class Seq2Seq():
             self.target_token_index = pickle.load(handle)
             self.num_decoder_tokens = len(self.target_token_index)
 
-        # Reverse-lookup token index to decode sequences back to
-        # something readable.
+        # Reverse-lookup token index to decode sequences back to something readable.
         self.reverse_input_char_index = dict(
             (i, char) for char, i in self.input_token_index.items())
         self.reverse_target_char_index = dict(
@@ -115,10 +111,16 @@ class Seq2Seq():
         print('Max sequence length for inputs:', self.max_encoder_seq_length)
         print('Max sequence length for outputs:', self.max_decoder_seq_length)
 
+        # indices
         self.input_token_index = dict(
             [(char, i) for i, char in enumerate(input_characters)])
         self.target_token_index = dict(
             [(char, i) for i, char in enumerate(target_characters)])
+        # Reverse-lookup token index to decode sequences back to something readable.
+        self.reverse_input_char_index = dict(
+            (i, char) for char, i in self.input_token_index.items())
+        self.reverse_target_char_index = dict(
+            (i, char) for char, i in self.target_token_index.items())
 
         encoder_input_data = np.zeros(
             (len(input_texts), self.max_encoder_seq_length, self.num_encoder_tokens),
@@ -155,24 +157,23 @@ class Seq2Seq():
         # and to return internal states as well. We don't use the
         # return states in the training model, but we will use them in inference.
         decoder_lstm = LSTM(latent_dim, return_sequences=True, return_state=True)
-        decoder_outputs, _, _ = decoder_lstm(decoder_inputs,
-                                             initial_state=encoder_states)
+        decoder_outputs, state_h, state_c = decoder_lstm(
+            decoder_inputs, initial_state=encoder_states)
         decoder_dense = Dense(self.num_decoder_tokens, activation='softmax')
         decoder_outputs = decoder_dense(decoder_outputs)
 
         # Define the model that will turn
         # `encoder_input_data` & `decoder_input_data` into `decoder_target_data`
         self.model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
-                # Next: inference mode (sampling).
+
+        # Define sampling models for inference: inference mode (sampling)
         # 1) encode input and retrieve initial decoder state
         # 2) run one step of decoder with this initial state
         # and a "start of sequence" token as target.
         # Output will be the next target token
         # 3) Repeat with the current target token and current states
 
-        # Define sampling models
         self.encoder_model = Model(encoder_inputs, encoder_states)
-
         decoder_state_input_h = Input(shape=(latent_dim,))
         decoder_state_input_c = Input(shape=(latent_dim,))
         decoder_states_inputs = [decoder_state_input_h, decoder_state_input_c]
@@ -184,21 +185,15 @@ class Seq2Seq():
             [decoder_inputs] + decoder_states_inputs,
             [decoder_outputs] + decoder_states)
 
-        # Reverse-lookup token index to decode sequences back to
-        # something readable.
-        self.reverse_input_char_index = dict(
-            (i, char) for char, i in self.input_token_index.items())
-        self.reverse_target_char_index = dict(
-            (i, char) for char, i in self.target_token_index.items())
 
     def train(self, encoder_input_data, decoder_input_data, decoder_target_data):
         self.build_model()
         # Run training
         self.model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
         self.model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
-                  batch_size=batch_size,
-                  epochs=self.epochs,
-                  validation_split=0.2)
+                        batch_size=batch_size,
+                        epochs=self.epochs)
+                        # validation_split=0.2)
         # Save model
         self.model.save(model_path)
         # save indices
@@ -250,6 +245,7 @@ class Seq2Seq():
             # Take one sequence (part of the training set)
             # for trying out decoding.
             input_seq = encoder_input_data[seq_index: seq_index + 1]
+            print(input_seq)
             decoded_sentence = self.decode_sequence(input_seq)
             print('-')
             print('Input sentence:', input_texts[seq_index])
@@ -264,17 +260,22 @@ class Seq2Seq():
                 input_seq[0, t, self.input_token_index[char]] = 1.
         decoded_sentence = self.decode_sequence(input_seq)
         return decoded_sentence
-	#print('-')
-        #print('Input sentence:', input_text)
-        #print('Decoded sentence:', decoded_sentence)
 
 
 def train_model():
+    # parse training parameters from the command line
     parser = argparse.ArgumentParser()
     parser.add_argument("-e", help="number of epochs to train for")
+    parser.add_argument("-l", help="limit on the number of training samples")
+    parser.add_argument("-d", help="number of latent dimensions")
+    parser.add_argument("-b", help="batch size")
     args = parser.parse_args()
     epochs = int(args.e)
-    model = Seq2Seq(epochs)
+    limit = int(args.l)
+    latent_dim = int(args.d)
+    batch_size = int(args.b)
+    
+    model = Seq2Seq(epochs, batch_size, latent_dim, limit)
     input_texts, encoder_input_data, decoder_input_data, decoder_target_data = model.preprocess(data_path)
     model.train(encoder_input_data, decoder_input_data, decoder_target_data)
     model.test(input_texts, encoder_input_data)
@@ -284,7 +285,7 @@ def interactive_mode():
     model = Seq2Seq()
     model.restore_model(model_path)
     
-    input_text = 'im interested in data about vienna'
+    input_text = 'vienna data'
     print(input_text)
     print(model.infer(input_text))
 
