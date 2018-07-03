@@ -25,9 +25,9 @@ import numpy as np
 
 batch_size = 1  # Batch size for training.
 latent_dim = 256  # Latent dimensionality of the encoding space.
-limit = 10  # Number of samples to train on.
+limit = 30  # Number of samples to train on.
 # Path to the data txt file on disk.
-data_path = 'data/dialogue_test.txt'
+data_path = 'data/dialogue.txt'
 model_path = 'models/s2s.h5'
 path_input_index = 'models/input_index.pickle'
 path_target_index = 'models/target_index.pickle'
@@ -281,22 +281,19 @@ def train_model():
     model.test(input_texts, encoder_input_data)
 
 
-def test_saved_model():
-    model = Seq2Seq()
-    model.restore_model(model_path)
-    input_text = 'im interested in data about vienna'
-    model.infer(input_text)
-
-
 def interactive_mode():
     model = Seq2Seq()
     model.restore_model(model_path)
+    
+    input_text = 'im interested in data about vienna'
+    print(input_text)
+    print(model.infer(input_text))
+
     while True:
         input_text = input()
         print(model.infer(input_text.lower()))
 
 
 if __name__ == '__main__':
-  #  train_model()
-#    test_saved_model()
+    train_model()
     interactive_mode()
