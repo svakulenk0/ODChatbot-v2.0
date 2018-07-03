@@ -292,8 +292,8 @@ def interactive_mode():
     model.restore_model(model_path)
     while True:
         input_text = input()
-        print input_text
-        print model.infer(input_text.lower())
+        print(input_text)
+        print(model.infer(input_text.lower()))
 
 
 if __name__ == '__main__':
