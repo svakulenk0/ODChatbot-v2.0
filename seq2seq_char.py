@@ -197,9 +197,8 @@ class Seq2Seq():
         self.model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
         self.model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
                   batch_size=batch_size,
-                  epochs=self.epochs)
-        # ,
-                  # validation_split=0.2)
+                  epochs=self.epochs,
+                  validation_split=0.2)
         # Save model
         self.model.save(model_path)
         # save indices
