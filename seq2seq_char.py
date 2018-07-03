@@ -261,7 +261,8 @@ class Seq2Seq():
         input_seq = np.zeros((1, self.max_encoder_seq_length, self.num_encoder_tokens),
             dtype='float32')
         for t, char in enumerate(input_text):
-            input_seq[0, t, self.input_token_index[char]] = 1.
+            if char in self.input_token_index:
+                input_seq[0, t, self.input_token_index[char]] = 1.
         decoded_sentence = self.decode_sequence(input_seq)
         return decoded_sentence
 	#print('-')
