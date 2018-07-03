@@ -37,7 +37,7 @@ class Seq2Seq():
         '''
         self.max_encoder_seq_length = 32
         self.max_decoder_seq_length = 91
-        self.latent_dim = 256
+        self.latent_dim = 500
 
     def restore_model(self, path):
         # Restore the model and construct the encoder and decoder.
@@ -267,14 +267,12 @@ def train_model():
     parser = argparse.ArgumentParser()
     parser.add_argument("-e", help="number of epochs to train for")
     parser.add_argument("-l", help="limit on the number of training samples")
-    parser.add_argument("-d", help="number of latent dimensions")
     parser.add_argument("-b", help="batch size")
     args = parser.parse_args()
 
     model = Seq2Seq()
     model.epochs = int(args.e)
     model.limit = int(args.l)
-    model.latent_dim = int(args.d)
     model.batch_size = int(args.b)
     
     input_texts, encoder_input_data, decoder_input_data, decoder_target_data = model.preprocess(data_path)
