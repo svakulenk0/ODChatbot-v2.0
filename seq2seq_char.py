@@ -32,14 +32,9 @@ path_target_index = 'models/target_index.pickle'
 
 class Seq2Seq():
 
-    def __init__(self, epochs, batch_size, latent_dim, limit):
+    def __init__(self):
         '''
-        epochs - number of epochs to train for
         '''
-        self.epochs = epochs
-        self.batch_size = batch_size
-        self.latent_dim = latent_dim
-        self.limit = limit
         self.max_encoder_seq_length = 32
         self.max_decoder_seq_length = 91
 
@@ -190,6 +185,7 @@ class Seq2Seq():
 
 
     def train(self, encoder_input_data, decoder_input_data, decoder_target_data):
+
         self.build_model()
         # Run training
         self.model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
@@ -273,12 +269,13 @@ def train_model():
     parser.add_argument("-d", help="number of latent dimensions")
     parser.add_argument("-b", help="batch size")
     args = parser.parse_args()
-    epochs = int(args.e)
-    limit = int(args.l)
-    latent_dim = int(args.d)
-    batch_size = int(args.b)
+
+    model = Seq2Seq()
+    model.epochs = int(args.e)
+    model.limit = int(args.l)
+    model.latent_dim = int(args.d)
+    model.batch_size = int(args.b)
     
-    model = Seq2Seq(epochs, batch_size, latent_dim, limit)
     input_texts, encoder_input_data, decoder_input_data, decoder_target_data = model.preprocess(data_path)
     model.train(encoder_input_data, decoder_input_data, decoder_target_data)
     model.test(input_texts, encoder_input_data)
