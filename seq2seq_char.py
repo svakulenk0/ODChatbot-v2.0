@@ -37,6 +37,7 @@ class Seq2Seq():
         '''
         self.max_encoder_seq_length = 32
         self.max_decoder_seq_length = 91
+        self.latent_dim = 256
 
     def restore_model(self, path):
         # Restore the model and construct the encoder and decoder.
