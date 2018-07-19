@@ -1,16 +1,18 @@
 import torch
 import random
 import numpy as np
-from config import global_config as cfg
-from reader import CamRest676Reader, get_glove_matrix
-from reader import KvretReader, ODReader
-from tsd_net import TSD, cuda_, nan
+
 from torch.optim import Adam
 from torch.autograd import Variable
-from reader import pad_sequences
 import argparse, time
 
-from metric import CamRestEvaluator, KvretEvaluator, ODEvaluator
+from .metric import CamRestEvaluator, KvretEvaluator, ODEvaluator
+from .config import global_config as cfg
+from .reader import CamRest676Reader, get_glove_matrix
+from .reader import KvretReader, ODReader
+from .tsd_net import TSD, cuda_, nan
+from .reader import pad_sequences
+
 import logging
 
 

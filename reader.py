@@ -1,7 +1,6 @@
 import numpy as np
 import json
 import pickle
-from config import global_config as cfg
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 import logging
@@ -10,6 +9,8 @@ import os
 import re
 import csv
 import time, datetime
+
+from .config import global_config as cfg
 
 
 def clean_replace(s, r, t, forward=True, backward=False):

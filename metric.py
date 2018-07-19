@@ -8,7 +8,8 @@ import math, re, argparse
 import json
 import functools
 import pickle
-from reader import clean_replace
+
+from .reader import clean_replace
 
 en_sws = set(stopwords.words())
 wn = WordNetLemmatizer()

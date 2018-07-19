@@ -4,8 +4,8 @@
 svakulenko
 2 Jul 2018
 '''
-from load_ES import ESClient
-from model import Model
+from .load_ES import ESClient
+from .model import Model
 
 
 class Chatbot():
