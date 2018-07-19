@@ -4,43 +4,30 @@
 
 Python 3
 
-* Flask
-* elasticsearch
-* keras
-* tensorflow / tensorflow-gpu
-
-## Seq2Seq models
-
-* basic: character-level LSTM Encoder-Decoder [Keras](https://github.com/keras-team/keras/blob/master/examples/lstm_seq2seq.py)
+pip install -r requirements.txt
 
 
+## Training with default parameters
 
-### Train 
+```
+python3 model.py -mode train -model tsdf-OD
+```
 
-python3 seq2seq_char.py -e 500 -l 1500 -b 64
+## Inference
 
-Parameters:
+```
+python3 model.py -mode iteract -model tsdf-OD
+```
 
--e  number of epochs
--l  number of training samples
--b  batch size
+## Acknowledgement
 
+Based on (Sequicity)[https://github.com/WING-NUS/sequicity]
 
-python3 seq2seq_char.py -e 1000 -l 50 -b 1
-
-### Results
-
-Number of samples: 41
-Train on 32 Validate on 9 for 1000 epochs
-
-Can not handle search queries, e.g.
-
-data about education
-search graz
-
-is there something about economics
-search politics
-
-### Tips
-
-* To memorize longer or more responses increase training time, i.e. train for more epochs, e.g. in 200-500 epochs the model can memorize 'Hi! I am here to help you explore the available open data sets! Are you interested in something specifically or just looking around?'
+```
+@inproceedings{lei2018sequicity,
+  title={Sequicity: Simplifying Task-oriented Dialogue Systems with Single Sequence-to-Sequence Architectures},
+  author={Lei, Wenqiang and Jin, Xisen and Ren, Zhaochun and He, Xiangnan and Kan, Min-Yen and Yin, Dawei},
+  year={2018},
+  organization={ACL}
+}
+```

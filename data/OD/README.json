@@ -1,0 +1,21 @@
+
+Dataset contains the following three json files:
+1. dialogues.json: dialogue dataset, which contains the conversations and the labels for each turn.
+2. DB.json: database file, containing items with a set of attributes (facets).
+3. entities.json: specifies the values the attributes can take.
+
+
+Dialogues structure:
+
+[dial
+       [turn
+        usr
+              transcript
+              slu[
+                     act: "inform"
+                     slots[]
+              ]
+        sys
+              sent
+       ]
+]
