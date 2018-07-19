@@ -184,7 +184,6 @@ class Seq2Seq():
             [decoder_inputs] + decoder_states_inputs,
             [decoder_outputs] + decoder_states)
 
-
     def train(self, encoder_input_data, decoder_input_data, decoder_target_data):
 
         self.build_model()
@@ -201,7 +200,6 @@ class Seq2Seq():
             pickle.dump(self.input_token_index, handle, protocol=pickle.HIGHEST_PROTOCOL)
         with open(path_target_index, 'wb') as handle:
             pickle.dump(self.target_token_index, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
 
     def decode_sequence(self, input_seq):
         # Encode the input as state vectors.
