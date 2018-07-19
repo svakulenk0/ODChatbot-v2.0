@@ -29,6 +29,7 @@ class Chatbot():
 
         # look up extracted keywords in the database
         keywords = bspan.strip(' EOS_Z1')
+        print keywords
         print ('Searching for' % keywords)
         result = self.db.search(keywords=keywords)
 
