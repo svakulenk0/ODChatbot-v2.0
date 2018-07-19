@@ -22,7 +22,7 @@ class Chatbot():
         self.model = Model('OD')
         self.model.load_model()
 
-    def search(self, message='test'):
+    def search(self, message='ich suche data über wien'):
         response, bspan = self.model.infer(message)
         return "%s (%s)" % (response, bspan)
 
