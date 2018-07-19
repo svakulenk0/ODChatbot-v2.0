@@ -21,7 +21,7 @@ python3 model.py -mode iteract -model tsdf-OD
 
 ## Acknowledgement
 
-Based on (Sequicity)[https://github.com/WING-NUS/sequicity]
+Based on [Sequicity](https://github.com/WING-NUS/sequicity)
 
 ```
 @inproceedings{lei2018sequicity,
