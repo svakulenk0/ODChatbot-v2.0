@@ -6,11 +6,12 @@ from torch.autograd import Variable
 
 import numpy as np
 import math
-from config import global_config as cfg
 import copy, random, time, logging
 
 from torch.distributions import Categorical
-from reader import pad_sequences
+
+from .config import global_config as cfg
+from .reader import pad_sequences
 
 
 def cuda_(var):

@@ -4,7 +4,12 @@
 
 Python 3
 
+* torch==0.3.1
+* nltk
+
+```
 pip --no-cache-dir install -r requirements.txt
+```
 
 * mkdir log
 
