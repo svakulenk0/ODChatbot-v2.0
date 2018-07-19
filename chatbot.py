@@ -28,7 +28,15 @@ class Chatbot():
         print ("%s (%s)" % (response, bspan))
 
         # look up extracted keywords in the database
-        result = self.db.search(keywords=bspan.strip(' EOS_Z1'))
+        keywords = bspan.strip(' EOS_Z1')
+
+        # check if the keyword is oov
+        item = keywords.split('_')
+        if item[0] == 'ITEM':
+            idx = item[1]
+            keywords = message.split(' ')[idx]
+
+        result = self.db.search(keywords=keywords)
 
         # number of datasets found
         n = result['hits']['total']
@@ -40,11 +48,11 @@ class Chatbot():
                 dataset_id = doc["_id"]
                 dataset_link = "http://data.wu.ac.at/odgraphsearch/render/" + dataset_id
                 items.append("[%s](%s)" % (dataset_title, dataset_link))
-            return "\n\n".join(items)
+            return "Es gibt folgende Tabellen über *%s*" % keywords + "\n\n".join(items)
 
         # nothing found
         else:
-            return "Nothing found!"
+            return "Gibt's leider nichts!"
 
 
 def test_chatbot():
