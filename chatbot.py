@@ -29,7 +29,8 @@ class Chatbot():
 
         # look up extracted keywords in the database
         keywords = bspan.strip(' EOS_Z1')
-
+        print(keywords)
+        
         # check if the keyword is oov
         item = keywords.split('_')
         print(item)
