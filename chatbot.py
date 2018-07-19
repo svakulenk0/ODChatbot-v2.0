@@ -32,6 +32,7 @@ class Chatbot():
 
         # check if the keyword is oov
         item = keywords.split('_')
+        print(item)
         if item[0] == 'ITEM':
             idx = int(item[1])
             keywords = message.split(' ')[idx]
