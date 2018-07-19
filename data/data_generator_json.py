@@ -19,6 +19,21 @@ TEMPLATE_DIAL = '''
           "transcript": "%s",
           "slu": [
             {
+              "act": "greeting",
+              "slots": []
+            }
+          ]
+        },
+        "sys": {
+          "sent": "Willkommen!"
+        }
+      },
+      {
+        "turn": 1,
+        "usr": {
+          "transcript": "%s",
+          "slu": [
+            {
               "act": "inform",
               "slots": [
                 [
@@ -31,6 +46,21 @@ TEMPLATE_DIAL = '''
         },
         "sys": {
           "sent": "%s"
+        }
+      },
+      {
+        "turn": 2,
+        "usr": {
+          "transcript": "%s",
+          "slu": [
+            {
+              "act": "feedback",
+              "slots": []
+            }
+          ]
+        },
+        "sys": {
+          "sent": "Sehr gerne!"
         }
       }
     ]
@@ -45,6 +75,10 @@ TAMPLATE_DB = '''
 },
 '''
 
+GREETINGS = ['hallo!!!', 'hi', 'hey', "hey you", "hey robot", "anybody there"]
+THANKS = ["Danke!", "vielen dank"]
+
+
 def generate_db():
     all_terms = []
     with open('search_terms.txt') as f:
@@ -58,7 +92,7 @@ def generate_db():
 
 def generate_dialogues():
     # load patterns
-    with open('search_patterns.txt') as f:
+    with open('search_patterns_de.txt') as f:
         patterns = f.readlines()
 
     random.shuffle(patterns)
@@ -82,7 +116,10 @@ def generate_dialogues():
                     else:
                         sample += c
                 # sample = sample + '\tsearch ' + term
-                sample = TEMPLATE_DIAL % (sample, term, 'sample')
+                greeting = random.choice(GREETINGS)
+                thanks = random.choice(THANKS)
+
+                sample = TEMPLATE_DIAL % (greeting, sample, term, 'sample', thanks)
                 if sample:
                     print sample
                     samples.append(sample)
@@ -94,5 +131,5 @@ def generate_dialogues():
 
 
 if __name__ == '__main__':
-    # generate_db()
-    generate_dialogues()
+    generate_db()
+    # generate_dialogues()

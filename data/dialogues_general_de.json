@@ -1,0 +1,253 @@
+{
+      "dial": [
+        {
+          "turn": 0,
+          "usr": {
+            "transcript": "hallo!!!",
+            "slu": [
+              {
+                "act": "greeting",
+                "slots": [
+                  [
+                  
+                  ]
+                ]
+              }
+            ]
+          },
+          "sys": {
+            "sent": "Willkommen!"
+          }
+        }
+      ]
+  },
+  {
+      "dial": [
+        {
+          "turn": 0,
+          "usr": {
+            "transcript": "hi",
+            "slu": [
+              {
+                "act": "greeting",
+                "slots": [
+                  [
+                  
+                  ]
+                ]
+              }
+            ]
+          },
+          "sys": {
+            "sent": "Willkommen!"
+          }
+        }
+      ]
+  },
+  {
+      "dial": [
+        {
+          "turn": 0,
+          "usr": {
+            "transcript": "hey",
+            "slu": [
+              {
+                "act": "greeting",
+                "slots": [
+                  [
+                  
+                  ]
+                ]
+              }
+            ]
+          },
+          "sys": {
+            "sent": "Willkommen!"
+          }
+        }
+      ]
+  },
+  {
+      "dial": [
+        {
+          "turn": 0,
+          "usr": {
+            "transcript": "hey you",
+            "slu": [
+              {
+                "act": "greeting",
+                "slots": [
+                  [
+                  
+                  ]
+                ]
+              }
+            ]
+          },
+          "sys": {
+            "sent": "Willkommen!"
+          }
+        }
+      ]
+  },
+  {
+      "dial": [
+        {
+          "turn": 0,
+          "usr": {
+            "transcript": "hey robot",
+            "slu": [
+              {
+                "act": "greeting",
+                "slots": [
+                  [
+                  
+                  ]
+                ]
+              }
+            ]
+          },
+          "sys": {
+            "sent": "Willkommen!"
+          }
+        }
+      ]
+  },
+  {
+      "dial": [
+        {
+          "turn": 0,
+          "usr": {
+            "transcript": "anybody there",
+            "slu": [
+              {
+                "act": "greeting",
+                "slots": [
+                  [
+                  
+                  ]
+                ]
+              }
+            ]
+          },
+          "sys": {
+            "sent": "Willkommen!"
+          }
+        }
+      ]
+  },
+  {
+      "dial": [
+        {
+          "turn": 0,
+          "usr": {
+            "transcript": "was für daten hast du",
+            "slu": [
+              {
+                "act": "general_query",
+                "slots": [
+                  [
+                  
+                  ]
+                ]
+              }
+            ]
+          },
+          "sys": {
+            "sent": "Landes und Bundesbezogene Daten z. B. \n\n [Wiener Linien Routingservice Wien](http://data.wu.ac.at/odgraphsearch/render/https://data.wien.gv.at/csv/wienerlinien-ogd-haltestellen.csv)"
+          }
+        }
+      ]
+  },
+  {
+      "dial": [
+        {
+          "turn": 0,
+          "usr": {
+            "transcript": "was für daten gibt es",
+            "slu": [
+              {
+                "act": "general_query",
+                "slots": [
+                  [
+                  
+                  ]
+                ]
+              }
+            ]
+          },
+          "sys": {
+            "sent": "Landes und Bundesbezogene Daten z. B. \n\n [Wiener Linien Routingservice Wien](http://data.wu.ac.at/odgraphsearch/render/https://data.wien.gv.at/csv/wienerlinien-ogd-haltestellen.csv)"
+          }
+        }
+      ]
+  },
+  {
+      "dial": [
+        {
+          "turn": 0,
+          "usr": {
+            "transcript": "was gibt es bei dir alles zu finden",
+            "slu": [
+              {
+                "act": "general_query",
+                "slots": [
+                  [
+                  
+                  ]
+                ]
+              }
+            ]
+          },
+          "sys": {
+            "sent": "Es gibt Datensätze über Kunst, WU, Wirtschaftskammer, Verwaltungsdaten, Wirtschaft"
+          }
+        }
+      ]
+  },
+  {
+      "dial": [
+        {
+          "turn": 0,
+          "usr": {
+            "transcript": "Danke!",
+            "slu": [
+              {
+                "act": "feedback",
+                "slots": [
+                  [
+                  
+                  ]
+                ]
+              }
+            ]
+          },
+          "sys": {
+            "sent": "Sehr gerne!"
+          }
+        }
+      ]
+  },
+  {
+      "dial": [
+        {
+          "turn": 0,
+          "usr": {
+            "transcript": "vielen dank",
+            "slu": [
+              {
+                "act": "feedback",
+                "slots": [
+                  [
+                  
+                  ]
+                ]
+              }
+            ]
+          },
+          "sys": {
+            "sent": "Sehr gerne!"
+          }
+        }
+      ]
+  },
