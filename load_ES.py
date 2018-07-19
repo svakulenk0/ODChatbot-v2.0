@@ -18,13 +18,27 @@ FACETS = {
             "data_entities": "data_labels"
          }
 
-SEARCH_QUERY = {
+SEARCH_LIMIT = 20
+
+
+class ESClient():
+
+    def __init__(self, host=CONFIG[0], port=CONFIG[1], index=CONFIG[2]):
+        self.es = Elasticsearch(hosts=[{"host": host, "port": port}])
+        self.index = index
+
+    def search(self, keywords, limit=SEARCH_LIMIT):
+        '''
+        request keywords from the Elasticsearch datasets index
+        '''
+
+        search_query = {
                 "_source": ["dataset.dataset_name", "dataset.dataset_link"],
                 "query":
                     {
                      "query_string":
                         {
-                         "query": "%s",
+                         "query": keywords,
                          "default_operator": "AND",
                          "analyzer": "german",
                          "fields": list(FACETS.values())
@@ -40,16 +54,5 @@ SEARCH_QUERY = {
                                }
                     }
                 }
-
-SEARCH_LIMIT = 20
-
-
-class ESClient():
-
-    def __init__(self, host=CONFIG[0], port=CONFIG[1], index=CONFIG[2]):
-        self.es = Elasticsearch(hosts=[{"host": host, "port": port}])
-        self.index = index
-
-    def search(self, keywords, limit=SEARCH_LIMIT):
-        result = self.es.search(index=self.index, size=limit, body=SEARCH_QUERY%keywords)
+        result = self.es.search(index=self.index, size=limit, body=search_query)
         return result
