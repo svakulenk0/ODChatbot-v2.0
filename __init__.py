@@ -18,6 +18,6 @@ def setup(opsdroid):
 async def searchOD(opsdroid, config, message):
     request = message.regex.group(1)
     # print(request)
-    text, actions = chatbot.search(request)
+    text = chatbot.search(request)
     print(text)
     await message.respond(text)
