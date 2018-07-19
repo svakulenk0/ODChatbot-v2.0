@@ -52,7 +52,7 @@ class Chatbot():
 
         # nothing found
         else:
-            return "Gibt's leider nichts!"
+            return "Gibt's leider nichts über *%s*!" % keywords
 
 
 def test_chatbot():
