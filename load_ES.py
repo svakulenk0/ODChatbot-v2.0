@@ -31,7 +31,6 @@ class ESClient():
         '''
         request keywords from the Elasticsearch datasets index
         '''
-
         search_query = {
                 "_source": ["dataset.dataset_name", "dataset.dataset_link"],
                 "query":
@@ -54,5 +53,6 @@ class ESClient():
                                }
                     }
                 }
+        print ('Searching for' % keywords)
         result = self.es.search(index=self.index, size=limit, body=search_query)
         return result
