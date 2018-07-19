@@ -53,6 +53,5 @@ class ESClient():
                                }
                     }
                 }
-        print ('Searching for' % keywords)
         result = self.es.search(index=self.index, size=limit, body=search_query)
         return result
