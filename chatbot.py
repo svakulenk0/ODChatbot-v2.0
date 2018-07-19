@@ -28,12 +28,10 @@ class Chatbot():
         print ("%s (%s)" % (response, bspan))
 
         # look up extracted keywords in the database
-        keywords = bspan.strip(' EOS_Z1')
-        print(keywords)
-        
+        keywords = bspan.split(' ')[0]
+
         # check if the keyword is oov
         item = keywords.split('_')
-        print(item)
         if item[0] == 'ITEM':
             idx = int(item[1])
             keywords = message.split(' ')[idx]
