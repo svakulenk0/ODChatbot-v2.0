@@ -4,7 +4,21 @@
 
 Python 3
 
-pip install -r requirements.txt
+pip --no-cache-dir install -r requirements.txt
+
+```
+mkdir log
+```
+
+Download NLTK stopwords
+
+In Python console:
+```
+>>> import nltk
+>>> nltk.download()
+Downloader> d
+Identifier> stopwords
+```
 
 
 ## Training with default parameters

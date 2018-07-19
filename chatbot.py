@@ -18,7 +18,8 @@ class Chatbot():
         # maximum message size
         self.limit = limit
         # load the pre-trained model
-        self.model = Model()
+        # -model tsdf-OD
+        self.model = Model('OD')
         self.model.load_model()
 
     def search(self, message='test'):
