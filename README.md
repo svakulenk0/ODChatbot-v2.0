@@ -6,11 +6,9 @@ Python 3
 
 pip --no-cache-dir install -r requirements.txt
 
-```
-mkdir log
-```
+* mkdir log
 
-Download NLTK stopwords
+* Download NLTK stopwords
 
 In Python console:
 ```
@@ -22,6 +20,10 @@ Identifier> stopwords
 nltk.download('punkt')
 ```
 
+* Set simlink to this folder as an [opsdroid]() skill (in ~/.local/share/opsdroid/opsdroid-modules/skill on Linux)
+```
+ln -sfn ~/ODChatbot-v2.0 ODExploration
+```
 
 ## Training with default parameters
 

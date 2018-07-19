@@ -2,9 +2,9 @@ from opsdroid.matchers import match_regex
 import logging
 import random
 
-from .dialog_agent import DialogAgent
+from .chatbot import Chatbot
 
-chatbot = DialogAgent()
+chatbot = Chatbot()
 
 # restart exploration
 # chatbot.history = []
