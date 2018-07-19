@@ -17,18 +17,15 @@ import logging
 class Model:
     def __init__(self, dataset):
         reader_dict = {
-            'camrest': CamRest676Reader,
             'OD': ODReader,
-            'kvret': KvretReader,
         }
         model_dict = {
             'TSD':TSD
         }
         evaluator_dict = {
-            'camrest': CamRestEvaluator,
             'OD': ODEvaluator,
-            'kvret': KvretEvaluator,
         }
+        cfg.init_handler('tsdf-OD')
         self.reader = reader_dict[dataset]()
         self.m = model_dict[cfg.m](embed_size=cfg.embedding_size,
                                    hidden_size=cfg.hidden_size,
