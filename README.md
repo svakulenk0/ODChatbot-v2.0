@@ -18,6 +18,8 @@ In Python console:
 >>> nltk.download()
 Downloader> d
 Identifier> stopwords
+
+nltk.download('punkt')
 ```
 
 
