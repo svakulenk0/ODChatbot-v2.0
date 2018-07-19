@@ -28,10 +28,7 @@ class Chatbot():
         print ("%s (%s)" % (response, bspan))
 
         # look up extracted keywords in the database
-        keywords = bspan.strip(' EOS_Z1')
-        print keywords
-        print ('Searching for' % keywords)
-        result = self.db.search(keywords=keywords)
+        result = self.db.search(keywords=bspan.strip(' EOS_Z1'))
 
         # number of datasets found
         n = result['hits']['total']
