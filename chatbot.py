@@ -5,6 +5,9 @@ svakulenko
 2 Jul 2018
 '''
 from load_ES import ESClient
+from seq2seq_char import Seq2Seq
+
+model_path = 'models/s2s.h5'
 
 
 class Chatbot():
@@ -16,8 +19,14 @@ class Chatbot():
         self.db = ESClient()
         # maximum message size
         self.limit = limit
+        # load seq2seq model
+        self.model = Seq2Seq()
+        self.model.restore_model(model_path)
 
     def search(self, message='test'):
+        return self.model.infer(message)
+
+    def search_index(self, message='test'):
         bot_response = ''
         words = message.split()
         result = self.db.search(keywords=' AND '.join(words))
@@ -35,13 +44,10 @@ class Chatbot():
             bot_response += "Nothing found!"
         return bot_response
 
-    def test(self, message='test'):
-        return 'Hi!'
-
 
 def test_chatbot():
     chatbot = Chatbot()
-    print chatbot.test()
+    print(chatbot.search())
 
 
 def main():

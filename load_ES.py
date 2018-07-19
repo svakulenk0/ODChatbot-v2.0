@@ -1,6 +1,6 @@
 '''
 svakulenko
-7 Aug 2017
+2 Jul 2018
 
 Get data from ES
 '''

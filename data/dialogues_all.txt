@@ -1,0 +1,42 @@
+hi	Hello! How are you? What are you interested in?
+hello	Hi! I would like to help you explore the available open data sets! Are you interested in something specifically or just looking around?
+hey	Hallo!
+hey you	Hallo!
+hey robot	Hallo!
+anybody there	Hi! How can I help you? What are you looking for?
+hallo	Hi! I am here to help you explore various Austrian open datasets. Are you looking for anything specific?
+so what can you offer	We have a wide variety of data - lots of data about every single state in Austria, but also about areas like health, culture, traffic and infrastructure
+what do you have to offer	We have a wide variety of data - lots of data about every single state in Austria, but also about areas like health, culture, traffic and infrastructure
+what is that you have to offer	Any state that interests you more than others?
+hey could you give me brief introduction	We have a lot of different, and very interesting datasets.
+what can you do	We have a wide variety of data - lots of data about every single state in Austria, but also about areas like health, culture, traffic and infrastructure
+what can you offer	There are datasets of different organisations, formats and topics. Are you looking for anything specific?
+was für daten hast du	Landes und Bundesbezogene Daten
+was für daten gibt es	Landes und Bundesbezogene Daten
+what kind of data can you find	You can search for all kinds of datasets, from economics to the political area but also everything related to the life in Austria, e.g. education, sports, culture etc.
+great what kind of datasets do you offer	There are many datasets covering various topics. What kind of datasets are you interested in?
+what kind of data	Open Data spans various topics, e.g. culture, education, finances, geography, healthcare, population statistics, agriculture, ecology, politics and economics of Austria. What would be of interest to you?
+what datasets do you have	There are many datasets across various topics, e.g. culture, education, finances, geography, healthcare, population statistics, agriculture, ecology, politics and economics of Austria. What would be of interest to you?
+could you get me some data	Sure! How can I help you? There are many open data sets on different topics.
+was gibt es bei dir alles zu finden	Es gibt Datensätze über Kunst, WU, Wirtschaftskammer, Verwaltungsdaten, Wirtschaft.
+what is your content	Many datasets contain information about local businesses, products, administration etc. Most of the datasets are in CSV format.
+what kind of datasets are there	There are datasets from WU, Wirtschaftskammer Österreich, MUMOK, Österreichische Lotterie, etc.
+what kind of data is there	There are datasets on various topics for Austria, e.g. employment, population, education, environment.
+what data do you have	Arbeit, Bevölkerung, Bildung und Forschung, Finanzen, Geographie, Gesellschaft, Gesundheit. Are you interested in any of those topics or should I continue?
+could you tell me a bit about data you have	There are open datasets about economics, culture, research etc.
+hello can you tell me something about [a free austrian data portal]	Hello! There is a portal called data.gv.at its from the Austrian government and completely free. Are you interested in specific data?
+im interested in data about [Vienna] or generally about [Austria]	TODO
+do you have [categories]	All our datasets are about Austria. There are datasets related to public services, geography, arts, sports, environment, etc.
+perfect thanks a lot	You are very welcome!
+thank you darling	My pleasure
+thank you	My pleasure
+thank u	My pleasure
+thanks	My pleasure
+great thats what i am searching for	i am glad
+thank you a lot	Was that what you were looking for?
+thank you thats it	Perfect!
+interesting thank you for help	You're welcome!
+thank you for help	You're welcome!
+thanks a lot	It was nice talking to you!
+have a nice afternoon	You too! Bye-bye!
+bye	Bye!

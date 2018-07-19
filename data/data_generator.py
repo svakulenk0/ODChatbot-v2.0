@@ -3,6 +3,7 @@ svakulenko
 3 Jul 2018
 
 Generate datasets for training and testing NL template learner
+https://randomwordgenerator.com
 '''
 import random
 
@@ -33,8 +34,9 @@ with open('generated_train.txt', 'wb') as f_train, open('generated_test.txt', 'w
                 else:
                     sample += c
             sample = sample + '\tsearch ' + ' '.join(search_terms)
-            print sample
-            samples.append(sample)
+            if sample:
+                print sample
+                samples.append(sample)
 
         train_samples = samples[:30]
         f_train.writelines('\n'.join(train_samples) + '\n')
