@@ -33,7 +33,7 @@ class Chatbot():
         # check if the keyword is oov
         item = keywords.split('_')
         if item[0] == 'ITEM':
-            idx = item[1]
+            idx = int(item[1])
             keywords = message.split(' ')[idx]
 
         result = self.db.search(keywords=keywords)
