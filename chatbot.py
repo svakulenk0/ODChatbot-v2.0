@@ -48,7 +48,7 @@ class Chatbot():
                 dataset_id = doc["_id"]
                 dataset_link = "http://data.wu.ac.at/odgraphsearch/render/" + dataset_id
                 items.append("[%s](%s)" % (dataset_title, dataset_link))
-            return "Es gibt folgende Tabellen über *%s*" % keywords + "\n\n".join(items)
+            return "Es gibt folgende Tabellen über *%s*:\n\n" % keywords + "\n\n".join(items)
 
         # nothing found
         else:
