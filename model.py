@@ -394,7 +394,7 @@ def main():
         print("Hi! What would you like to search for?")
         while True:
             input_text = input().lower()
-            response, bspan = m.infer((input_text))
+            response, bspan = m.infer(input_text)
             print("%s (%s)" % (response, bspan))
 
 

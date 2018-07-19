@@ -5,9 +5,7 @@ svakulenko
 2 Jul 2018
 '''
 from load_ES import ESClient
-from seq2seq_char import Seq2Seq
-
-model_path = 'models/s2s.h5'
+from model import Model
 
 
 class Chatbot():
@@ -19,30 +17,31 @@ class Chatbot():
         self.db = ESClient()
         # maximum message size
         self.limit = limit
-        # load seq2seq model
-        self.model = Seq2Seq()
-        self.model.restore_model(model_path)
+        # load the pre-trained model
+        self.model = Model()
+        self.model.load_model()
 
     def search(self, message='test'):
-        return self.model.infer(message)
+        response, bspan = self.model.infer(message)
+        return "%s (%s)" % (response, bspan)
 
-    def search_index(self, message='test'):
-        bot_response = ''
-        words = message.split()
-        result = self.db.search(keywords=' AND '.join(words))
-        # number of datasets found
-        n = result['hits']['total']
-        # if at least one dataset found
-        if n > 0:
-            for doc in result['hits']['hits'][:self.limit]:
-                dataset_title = doc["_source"]["raw"]["title"]
-                dataset_id = doc["_source"]["raw"]["id"]
-                dataset_link = "http://www.data.gv.at/katalog/dataset/%s" % dataset_id
-                bot_response += "<br><a href='%s'>%s</a>" % (dataset_link, dataset_title)
-        # nothing found
-        else:
-            bot_response += "Nothing found!"
-        return bot_response
+    # def search_index(self, message='test'):
+    #     bot_response = ''
+    #     words = message.split()
+    #     result = self.db.search(keywords=' AND '.join(words))
+    #     # number of datasets found
+    #     n = result['hits']['total']
+    #     # if at least one dataset found
+    #     if n > 0:
+    #         for doc in result['hits']['hits'][:self.limit]:
+    #             dataset_title = doc["_source"]["raw"]["title"]
+    #             dataset_id = doc["_source"]["raw"]["id"]
+    #             dataset_link = "http://www.data.gv.at/katalog/dataset/%s" % dataset_id
+    #             bot_response += "<br><a href='%s'>%s</a>" % (dataset_link, dataset_title)
+    #     # nothing found
+    #     else:
+    #         bot_response += "Nothing found!"
+    #     return bot_response
 
 
 def test_chatbot():
